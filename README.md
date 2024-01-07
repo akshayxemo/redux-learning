@@ -52,7 +52,15 @@ npm install react-redux
 └── ...
 ```
 
-**A application only contains one store that is the best practice.** 
+How to get the symbol used in avobe folder structure ?
+> 1. hold ALT + 179 ─> │
+> 2. hold ALT + 192 ─> └
+> 3. hold ALT + 195 ─> ├
+> 4. hold ALT + 196 ─> ─
+
+More available on [here](https://www.freecodecamp.org/news/alt-codes-special-characters-keyboard-symbols-windows-list/)
+
+### **A application only contains one store and that is the best practice.** 
 
 > Only four things to remember : `Store` `Reducers` `useSelector` `useDispatch`
 
