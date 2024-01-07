@@ -44,6 +44,10 @@ npm install react-redux
 │   ├── components
 │       ├── AddTodo.jsx         # components where we will use the methods declared in slice reducers
 │       └── Todo.jsx
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   ├── Main.jsx
 │   └── ...
 └── ...
 ```
