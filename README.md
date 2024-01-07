@@ -108,6 +108,32 @@ export default todoSlice.reducer;
 ```
 **we have to export all individual reducers and also a main reducer source which is a default export that is been used in the store.js to store the state.**
 
+## how to use this Reducers
+For adding the todo then use `addTodo` reducer and `useDispatch` method from 'react-redux'
+
+### AddTodo.jsx
+```
+import {useDispatch} from 'react-redux'
+import {addTodo} from '../feature/todo/todoSlice'
+
+export default const AddTodo = ()=>{
+    const[input, setInput] = useState('');
+    const dispatch = useDispatch();
+    const addTodoHandler = (e)=>{
+        e.preventDefault();
+        dispatch(addTodo(input));
+        setInput('');
+    }
+
+    return <>
+        <form onsubmit={addTodoHandler}>
+            <input name="text" value={input} onchange={(e)=>{setInput(e.target.value)}}/>
+            <button type="submit">Add todo</button>
+        </form>
+    </>
+}
+
+```
 
 
 This tutorial is given in this [youtube video](https://youtu.be/1i04-A7kfFI?si=pNHpxLO5ussLTz73) by [Hitesh Choudhary](https://github.com/hiteshchoudhary/) `channel Name: 
