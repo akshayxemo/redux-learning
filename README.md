@@ -31,18 +31,68 @@ npm install @reduxjs/toolkit
 npm install react-redux
 ```
 
-## Folder Structure
+## My Folder Structure
 ```
 .
 ├── ...
 ├── src
 │   ├── app
-│       └── store.js
+│       └── store.js            # Main Storage
 │   ├── features
-│       └── toDoSlice.js
+│       └── todo
+│           └── todoSlice.js    # Reducers definitions
 │   ├── components
-│       ├── AddTodo.jsx
+│       ├── AddTodo.jsx         # components where we will use the methods declared in slice reducers
 │       └── Todo.jsx
 │   └── ...
 └── ...
+```
+
+**A application only contains one store that is the best practice.** 
+
+> Only four things to remember : `Store` `Reducers` `useSelector` `useDispatch`
+
+Methods Require :
+> 1. `configureStore` from `@reduxjs/toolkit` to initially configure the store
+> 2. `createSlice` from `@reduxjs/toolkit` to create Slices
+> 3. `nanoid` from `@reduxjs/toolkit` to generate random unique ID
+
+## Code snippets
+Configuring the initial store which stores the states related to todo application.
+### store.js
+```
+import {configureStore} from '@reduxjs/toolkit'
+import todoReducer from '../features/todo/todoSlice'
+
+export const store = configureStore({
+    reducer: todoReducer
+})
+```
+### todoSlice.js
+```
+import {createSlice, nanoid} from '@reduxjs/toolkit';
+
+/* configuring initial state */
+const initialState = {
+  todos: [{id:1, text:'hello world'}]
+};
+
+export const todoSlice = createSlice({
+  name: 'todo',
+  initialState,
+  reducers: {
+    addTodo:(state, action)=>{
+      const todo = {
+        id: nanoid(),
+        text: action.payload
+      };
+      state.todos.push(todo);
+    },
+    removeTodo: (state, action)=>{
+      state.todos = state.todos.filter((todo)=>{
+        todo.id !== action.payload
+      })
+    }
+  }
+});
 ```
