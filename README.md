@@ -68,6 +68,13 @@ export const store = configureStore({
     reducer: todoReducer
 })
 ```
+
+Configuring the initial state and the todo slice. there can be more than one slice as well. In this slice we can see that there are two things we are using `state` and `action` in the callback function in reducers in the todo slice. 
+
+`state` : this stores the initial state ( it is an object and can contain multiple values ). Each time state passes to the callback means it passes all the values that are currently stored in the state.
+
+`action` : an action parameter refers to a plain JavaScript object that represents an intention to change the state. Think of Redux actions as messengers that deliver information about events happening in your app to the Redux store. It contains payload which contains the message or data that has been dispatched.
+
 ### todoSlice.js
 ```
 import {createSlice, nanoid} from '@reduxjs/toolkit';
@@ -95,4 +102,13 @@ export const todoSlice = createSlice({
     }
   }
 });
+
+export const {addTodo, removeTodo} = todoSlice.action;
+export default todoSlice.reducer;
 ```
+**we have to export all individual reducers and also a main reducer source which is a default export that is been used in the store.js to store the state.**
+
+
+
+This tutorial is given in this [youtube video](https://youtu.be/1i04-A7kfFI?si=pNHpxLO5ussLTz73) by [Hitesh Choudhary](https://github.com/hiteshchoudhary/) `channel Name: 
+Chai aur Code`
