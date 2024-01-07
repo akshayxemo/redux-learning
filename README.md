@@ -6,7 +6,7 @@ Redux is a JavaScript library that manages and centralizes application state. It
 
 Redux itself is a `standalone library` that can be used with any UI layer or framework, including React, Angular, Vue, Ember, and vanilla JS. Although Redux and React are commonly used together, they are independent of each other. If you are using Redux with any kind of UI framework, you will normally use a `UI binding` library to tie Redux together with your UI framework, rather than directly interacting with the store from your UI code.
 
-It's also stated in their official website that its a "Predictable state container for JS apps" not "React Apps". Visit official site [here](https://redux.js.org/)
+It's also stated in their official website that its a `Predictable state container for JS apps` not `React Apps`. Visit official site [here](https://redux.js.org/)
 
 ![image](https://github.com/akshayxemo/redux-learning/assets/83893825/01dd5b0b-c99c-40e8-ba6c-651b30eee01c)
 
