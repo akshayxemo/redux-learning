@@ -134,7 +134,63 @@ export default const AddTodo = ()=>{
 }
 
 ```
+### Todo.jsx
+```
+import {useSelector, useDispatch} from 'react-redux'
+import {removeTodo} from '../feature/todo/todoSlice'
 
+export default const Todo = ()=>{
+    const todos = useSelector(state => state.todos);
+    const dispatch = useDispatch();
 
+    return <>
+        <div>Todos</div>
+        {todos.map((todo)=>{
+            return <li key={todo.id}>
+                {todo.text}
+            <button
+            onclick={()=>{dispatch(removeTodo(todo.id))}}>
+            X</button>
+            </li>
+        }
+    </>
+}
+
+```
+### App.jsx
+```
+import AddTodo from '../components/AddTodo';
+import Todo from '../components/Todo';
+import './App.css';
+
+export default const App = ()=>{
+    return <>
+        <div>TODO LITS</div>
+        <div>
+        <AddTodo/>
+        <Todo/>
+        </div>
+    </>
+}
+```
+
+> Now Wrap everything in `Provider` from 'react-redux' and pass the store props
+### Main.jsx
+```
+import React from 'react';
+import ReactDom from 'react-dom/client';
+import './App.jsx'
+import './index.css'
+import {Provider} from 'react-redux';
+import {store} from './app/store';
+
+ReactDom.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </React.StrictMode>
+
+```
 This tutorial is given in this [youtube video](https://youtu.be/1i04-A7kfFI?si=pNHpxLO5ussLTz73) by [Hitesh Choudhary](https://github.com/hiteshchoudhary/) `channel Name: 
 Chai aur Code`
